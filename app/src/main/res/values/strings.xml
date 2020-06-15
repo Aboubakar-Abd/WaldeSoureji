@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Betaille</string>
+    <string name="tab_text_1">Listes Proprietaire</string>
+    <string name="tab_text_2">Liste du Betaille</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="t_female">female</string>
+    <string name="t_male">male</string>
+    <string name="nom_prop">Nom</string>
+    <string name="prenom_prop">Prenom</string>
+    <string name="id_prop">Id</string>
+    <string name="nbre_prop">Nombre</string>
+</resources>

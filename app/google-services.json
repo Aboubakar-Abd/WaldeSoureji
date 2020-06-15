@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "809117467864",
+    "firebase_url": "https://taxi-65dde.firebaseio.com",
+    "project_id": "taxi-65dde",
+    "storage_bucket": "taxi-65dde.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809117467864:android:f29aa6ef196f7b35f903ad",
+        "android_client_info": {
+          "package_name": "com.bello.betaille"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809117467864-uffr5or2atpos7uts2o6goriau9nli0l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA66Hsu8FzwKSqsyKNEQa5AZu4isuH_yOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "809117467864-uffr5or2atpos7uts2o6goriau9nli0l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

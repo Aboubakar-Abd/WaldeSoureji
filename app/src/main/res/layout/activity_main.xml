@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="?actionBarSize"
+            android:padding="@dimen/appbar_padding"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+  <androidx.appcompat.widget.LinearLayoutCompat
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:orientation="vertical">
+
+
+      <Button
+          android:id="@+id/btn_ptg"
+          android:layout_width="175dp"
+          android:layout_height="wrap_content"
+          android:layout_margin="20dp"
+          android:elevation="5dp"
+          android:layout_gravity="center"
+          android:onClick="onBtnPartClick"
+          android:text="Partatge" />
+
+      <Button
+          android:id="@+id/btn_dep"
+          android:layout_width="175dp"
+          android:layout_height="wrap_content"
+          android:layout_margin="20dp"
+          android:elevation="5dp"
+          android:onClick="onBtnDepClick"
+          android:text="Depense" />
+
+      <Button
+          android:id="@+id/btn_solde"
+          android:layout_width="175dp"
+          android:layout_height="wrap_content"
+          android:layout_margin="20dp"
+          android:elevation="5dp"
+          android:onClick="onBtnSoldeClick"
+          android:text="Solde" />
+
+  </androidx.appcompat.widget.LinearLayoutCompat>
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/fab"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom|end"-->
+<!--        android:layout_margin="@dimen/fab_margin"-->
+<!--        app:srcCompat="@android:drawable/ic_dialog_email" />-->
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
