@@ -1,17 +1,12 @@
-package com.bello.betaille;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package com.bello.papa;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -21,17 +16,15 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.anstrontechnologies.corehelper.AnstronCoreHelper;
-import com.bello.betaille.Model.Boeufs;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
@@ -45,17 +38,15 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.UUID;
 
-import static com.bello.betaille.Consts.COLLECTION_BOEUF;
-import static com.bello.betaille.Consts.COLLECTION_NOMBRES;
-import static com.bello.betaille.Consts.COLLECTION_NOMBRES_BOEUFS;
-import static com.bello.betaille.Consts.COLLECTION_NOMBRES_PROPRIETAIRE;
-import static com.bello.betaille.Consts.COLLECTION_PROFIL_BOEUFS;
-import static com.bello.betaille.Consts.COLLECTION_PROFIL_PROPRIETAIRE;
-import static com.bello.betaille.Consts.COLLECTION_PROPRIETAIRE;
-import static com.bello.betaille.Consts.PICK_IMAGE_REQUEST;
-import static com.bello.betaille.Consts.SEXE_FEMELE;
-import static com.bello.betaille.Consts.SEXE_MALE;
-import static com.bello.betaille.Model.FirebaseQueries.firebaseIncrement;
+import static com.bello.papa.Consts.COLLECTION_BOEUF;
+import static com.bello.papa.Consts.COLLECTION_NOMBRES;
+import static com.bello.papa.Consts.COLLECTION_NOMBRES_BOEUFS;
+import static com.bello.papa.Consts.COLLECTION_PROFIL_BOEUFS;
+import static com.bello.papa.Consts.COLLECTION_PROPRIETAIRE;
+import static com.bello.papa.Consts.PICK_IMAGE_REQUEST;
+import static com.bello.papa.Consts.SEXE_FEMELE;
+import static com.bello.papa.Consts.SEXE_MALE;
+import static com.bello.papa.Model.FirebaseQueries.firebaseIncrement;
 
 public class AddBoeufActivity extends AppCompatActivity {
 
@@ -170,13 +161,11 @@ public class AddBoeufActivity extends AppCompatActivity {
                 .add(boeuf).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
-              Intent intent = new Intent(AddBoeufActivity.this, ListBoeufActivity.class);
-                //intent.putExtra("id", documentReference.getId());
-                startActivity(intent);
-                //Toast.makeText(AddBoeufActivity.this,"Proprietaire Added Successfully",Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddBoeufActivity.this,"Boeuf Added Successfully",Toast.LENGTH_SHORT).show();
                 firebaseIncrement(propRef, "Nombre");
+                firebaseIncrement(nbBoeufRef, sexe);
                 firebaseIncrement(nbBoeufRef, COLLECTION_NOMBRES_BOEUFS);
-
+                onBackPressed();
             }
         });
 

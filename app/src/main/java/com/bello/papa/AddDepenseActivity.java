@@ -1,4 +1,4 @@
-package com.bello.betaille;
+package com.bello.papa;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,14 +22,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 
-import static com.bello.betaille.Consts.COLLECTION_DEPENSES;
-import static com.bello.betaille.Consts.COLLECTION_NOMBRES;
-import static com.bello.betaille.Consts.COLLECTION_NOMBRES_BOEUFS;
-import static com.bello.betaille.Consts.COLLECTION_PROPRIETAIRE;
+import static com.bello.papa.Consts.COLLECTION_DEPENSES;
+import static com.bello.papa.Consts.COLLECTION_NOMBRES;
+import static com.bello.papa.Consts.COLLECTION_NOMBRES_BOEUFS;
+import static com.bello.papa.Consts.COLLECTION_PROPRIETAIRE;
 
 public class AddDepenseActivity extends AppCompatActivity {
 
@@ -86,10 +85,11 @@ public class AddDepenseActivity extends AppCompatActivity {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
 
-                                Intent intent = new Intent(AddDepenseActivity.this, ListDepActivity.class);
-                                 startActivity(intent);
+//                                Intent intent = new Intent(AddDepenseActivity.this, ListDepActivity.class);
+//                                 startActivity(intent);
                                 updateDep(prixT/document.getDouble(COLLECTION_NOMBRES_BOEUFS));
                                 Toast.makeText(AddDepenseActivity.this,"Depense Added Succesfully",Toast.LENGTH_SHORT).show();
+                                onBackPressed();
                             }
                         }
                     }

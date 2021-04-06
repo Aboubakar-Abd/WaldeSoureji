@@ -1,15 +1,14 @@
-package com.bello.betaille.viewHolder;
+package com.bello.papa.viewHolder;
 
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bello.betaille.Interface.ItemClickListener;
-import com.bello.betaille.R;
+import com.bello.papa.Interface.ItemClickListener;
+import com.bello.papa.R;
 
 public class BoeufViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -26,7 +25,7 @@ public class BoeufViewHolder extends RecyclerView.ViewHolder implements View.OnC
         id_boeuf_holder = itemView.findViewById(R.id.num_boeuf_holder);
         age_boeuf_holder = itemView.findViewById(R.id.age_boeuf_holder);
         sexe_boeuf_holder = itemView.findViewById(R.id.sexe_boeuf_holder);
-        nom_prop_boeuf_holder = itemView.findViewById(R.id.nom_prop_boeuf_holder);
+//        nom_prop_boeuf_holder = itemView.findViewById(R.id.nom_prop_boeuf_holder);
         view = itemView;
 
 

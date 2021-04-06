@@ -1,4 +1,4 @@
-package com.bello.betaille;
+package com.bello.papa;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,20 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bello.betaille.Model.Depenses;
-import com.bello.betaille.Model.Prop;
-import com.bello.betaille.viewHolder.DepViewHolder;
-import com.bello.betaille.viewHolder.PropViewHolder;
+import com.bello.papa.Model.Depenses;
+import com.bello.papa.viewHolder.DepViewHolder;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.squareup.picasso.Picasso;
 
-import static com.bello.betaille.Consts.COLLECTION_DEPENSES;
-import static com.bello.betaille.Consts.COLLECTION_PROPRIETAIRE;
+import static com.bello.papa.Consts.COLLECTION_DEPENSES;
 
 public class ListDepActivity extends AppCompatActivity {
 
@@ -49,7 +44,7 @@ public class ListDepActivity extends AppCompatActivity {
         });
 
         final Query query = db.collection(COLLECTION_DEPENSES)
-                .orderBy("Date", Query.Direction.ASCENDING);
+                .orderBy("Date", Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<Depenses> options = new FirestoreRecyclerOptions.Builder<Depenses>()
                 .setQuery(query, Depenses.class)
                 .build();
@@ -57,10 +52,10 @@ public class ListDepActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(final DepViewHolder depViewHolder,int i,final Depenses depenses) {
 
-                depViewHolder.date_dep_holder.setText(depenses.getDate());
-                depViewHolder.dsc_dep_holder.setText(depenses.getDescription());
-                depViewHolder.pu_dep_holder.setText(Double.toString(depenses.getPrix_unitaire()));
-                depViewHolder.ptotal_dep_holder.setText(Integer.toString(depenses.getQuantite()));
+                depViewHolder.date_dep_holder.setText("Date: " + depenses.getDate());
+                depViewHolder.dsc_dep_holder.setText("Description: " + depenses.getDescription());
+                depViewHolder.pu_dep_holder.setText("Prix Unitaire: " + Double.toString(depenses.getPrix_unitaire()));
+                depViewHolder.ptotal_dep_holder.setText("Quantité: " + Integer.toString(depenses.getQuantite()));
 
 //
 //                propViewHolder.itemView.setOnClickListener(new View.OnClickListener() {

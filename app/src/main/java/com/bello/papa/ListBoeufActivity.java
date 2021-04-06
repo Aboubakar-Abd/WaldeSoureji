@@ -1,4 +1,4 @@
-package com.bello.betaille;
+package com.bello.papa;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -12,17 +12,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.bello.betaille.Model.Boeufs;
-import com.bello.betaille.viewHolder.BoeufViewHolder;
-import com.bello.betaille.viewHolder.PropViewHolder;
+import com.bello.papa.Model.Boeufs;
+import com.bello.papa.viewHolder.BoeufViewHolder;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -35,9 +32,8 @@ import java.time.Period;
 import java.util.Calendar;
 import java.util.Date;
 
-import static com.bello.betaille.Consts.COLLECTION_BOEUF;
-import static com.bello.betaille.Consts.COLLECTION_NOMBRES_BOEUFS;
-import static com.bello.betaille.Consts.COLLECTION_PROPRIETAIRE;
+import static com.bello.papa.Consts.COLLECTION_BOEUF;
+import static com.bello.papa.Consts.COLLECTION_PROPRIETAIRE;
 
 public class ListBoeufActivity extends AppCompatActivity {
 
@@ -71,9 +67,9 @@ public class ListBoeufActivity extends AppCompatActivity {
             protected void onBindViewHolder(final BoeufViewHolder boeufViewHolder,int i,final Boeufs boeufs) {
 
                 //Toast.makeText(ListBoeufActivity.this,"nom" + boeufs.getSexe_Boeufs(),Toast.LENGTH_SHORT).show();
-                boeufViewHolder.nom_boeuf_holder.setText("Nom Boeuf: " + boeufs.getDesignation());
+                boeufViewHolder.nom_boeuf_holder.setText(boeufs.getDesignation());
                 if (boeufs.getSexe_Boeufs()!=null)
-                boeufViewHolder.sexe_boeuf_holder.setText("Sexe: " + boeufs.getSexe_Boeufs());
+                boeufViewHolder.sexe_boeuf_holder.setText(boeufs.getSexe_Boeufs());
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     try {
                         boeufViewHolder.age_boeuf_holder.setText(calculateAge(boeufs.getNaissBoeuf()));
@@ -82,22 +78,22 @@ public class ListBoeufActivity extends AppCompatActivity {
                     }
                 }
 
-                db.collection(COLLECTION_PROPRIETAIRE).document(boeufs.getProprietaire())
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    DocumentSnapshot document = task.getResult();
-                                    if (document.exists()) {
-
-                                        boeufViewHolder.nom_prop_boeuf_holder.setText("Nom du Prorietaire: " + document.getString("Nom") + " " + document.getString("Prenom"));
-                                        boeufViewHolder.id_boeuf_holder.setText("Numero Boeuf: " + document.getString("Id"));
-
-                                    }
-                                }
-                            }
-                        });
+//                db.collection(COLLECTION_PROPRIETAIRE).document(boeufs.getProprietaire())
+//                        .get()
+//                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                                if (task.isSuccessful()) {
+//                                    DocumentSnapshot document = task.getResult();
+//                                    if (document.exists()) {
+//
+//                                        boeufViewHolder.nom_prop_boeuf_holder.setText("Nom du Prorietaire: " + document.getString("Nom") + " " + document.getString("Prenom"));
+//                                        boeufViewHolder.id_boeuf_holder.setText("Numero Boeuf: " + document.getString("Id"));
+//
+//                                    }
+//                                }
+//                            }
+//                        });
 
                 String profileProp = boeufs.getBoeuf_photos();
                 if (profileProp==null) {
@@ -105,15 +101,15 @@ public class ListBoeufActivity extends AppCompatActivity {
                 }
                 Picasso.get().load(profileProp).into(boeufViewHolder.tof_boeuf_holder);
 
-//                boeufViewHolder.addBoeuf.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        DocumentSnapshot snapshot = getSnapshots().getSnapshot(boeufViewHolder.getAdapterPosition());
-//                        Intent intent = new Intent(ListBoeufActivity.this, AddBoeufActivity.class);
-//                        intent.putExtra("id", snapshot.getId());
-//                        startActivity(intent);
-//                    }
-//                });
+                boeufViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DocumentSnapshot snapshot = getSnapshots().getSnapshot(boeufViewHolder.getAdapterPosition());
+                        Intent intent = new Intent(ListBoeufActivity.this, EditBoeufActivity.class);
+                        intent.putExtra("id", snapshot.getId());
+                        startActivity(intent);
+                    }
+                });
 //                propViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 //                    @Override
 //                    public void onClick(View v) {
@@ -158,7 +154,7 @@ public class ListBoeufActivity extends AppCompatActivity {
         LocalDate now1 = LocalDate.now();
         Period diff1 = null;
         diff1 = Period.between(l1, now1);
-        return "Age: " + diff1.getYears() + "Ans " + diff1.getMonths() + "Mois";
+        return diff1.getYears() + "Ans " + diff1.getMonths() + "Mois";
     }
 
     protected void onStart(){

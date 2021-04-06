@@ -1,7 +1,6 @@
-package com.bello.betaille.viewHolder;
+package com.bello.papa.viewHolder;
 
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -9,8 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bello.betaille.Interface.ItemClickListener;
-import com.bello.betaille.R;
+import com.bello.papa.Interface.ItemClickListener;
+import com.bello.papa.R;
 
 
 public class PropViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -29,7 +28,7 @@ public class PropViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         txtPropName = itemView.findViewById(R.id.nom_prop_holder);
         txtPropPname = itemView.findViewById(R.id.prenom_prop_holder);
         txtPropId = itemView.findViewById(R.id.id_prop_holder);
-        txtPropNmber = itemView.findViewById(R.id.nmbre_boeuf_holder);
+//        txtPropNmber = itemView.findViewById(R.id.nmbre_boeuf_holder);
         txtDepense = itemView.findViewById(R.id.depene_prop);
         profile = itemView.findViewById(R.id.profile_image_holder);
     }

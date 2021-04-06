@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.2"
 
     defaultConfig {
-        applicationId "com.bello.betaille"
+        applicationId "com.bello.papa"
         minSdkVersion 22
         targetSdkVersion 29
         versionCode 1
@@ -38,6 +38,8 @@ dependencies {
 
 //    implementation 'com.github.abhidiwakar:AnstronCoreHelper:1.1'
     implementation 'com.iceteck.silicompressorr:silicompressor:2.2.3'
+
+    implementation 'com.nabinbhandari.android:permissions:3.8'
 
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'de.hdodenhof:circleimageview:3.0.0'

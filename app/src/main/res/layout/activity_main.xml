@@ -43,6 +43,15 @@
           android:text="Partatge" />
 
       <Button
+          android:id="@+id/btn_solde"
+          android:layout_width="175dp"
+          android:layout_height="wrap_content"
+          android:layout_margin="20dp"
+          android:elevation="5dp"
+          android:onClick="onBtnSoldeClick"
+          android:text="Troupeaux" />
+
+      <Button
           android:id="@+id/btn_dep"
           android:layout_width="175dp"
           android:layout_height="wrap_content"
@@ -50,15 +59,6 @@
           android:elevation="5dp"
           android:onClick="onBtnDepClick"
           android:text="Depense" />
-
-      <Button
-          android:id="@+id/btn_solde"
-          android:layout_width="175dp"
-          android:layout_height="wrap_content"
-          android:layout_margin="20dp"
-          android:elevation="5dp"
-          android:onClick="onBtnSoldeClick"
-          android:text="Solde" />
 
   </androidx.appcompat.widget.LinearLayoutCompat>
 

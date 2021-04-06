@@ -1,30 +1,24 @@
-package com.bello.betaille;
+package com.bello.papa;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
-import com.bello.betaille.Model.Prop;
-import com.bello.betaille.viewHolder.PropSoldeViewHolder;
-import com.bello.betaille.viewHolder.PropViewHolder;
+import com.bello.papa.Model.Prop;
+import com.bello.papa.viewHolder.PropSoldeViewHolder;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
 
-import static com.bello.betaille.Consts.COLLECTION_PROPRIETAIRE;
+import static com.bello.papa.Consts.COLLECTION_PROPRIETAIRE;
 
 
 public class AddSoldeActivity extends AppCompatActivity {

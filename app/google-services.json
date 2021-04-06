@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "809117467864",
-    "firebase_url": "https://taxi-65dde.firebaseio.com",
-    "project_id": "taxi-65dde",
-    "storage_bucket": "taxi-65dde.appspot.com"
+    "project_number": "567712864297",
+    "project_id": "walde-souredji-papa",
+    "storage_bucket": "walde-souredji-papa.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:809117467864:android:f29aa6ef196f7b35f903ad",
+        "mobilesdk_app_id": "1:567712864297:android:19be68652c51cd2b1ee438",
         "android_client_info": {
-          "package_name": "com.bello.betaille"
+          "package_name": "com.bello.papa"
         }
       },
       "oauth_client": [
         {
-          "client_id": "809117467864-uffr5or2atpos7uts2o6goriau9nli0l.apps.googleusercontent.com",
+          "client_id": "567712864297-rij83npp3v08megs3aq20ggq7tal8j69.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA66Hsu8FzwKSqsyKNEQa5AZu4isuH_yOo"
+          "current_key": "AIzaSyAb1YEb3ud-nTDFrhCmB8K49o4QD5O6HyQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "809117467864-uffr5or2atpos7uts2o6goriau9nli0l.apps.googleusercontent.com",
+              "client_id": "567712864297-rij83npp3v08megs3aq20ggq7tal8j69.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

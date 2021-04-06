@@ -1,4 +1,4 @@
-package com.bello.betaille;
+package com.bello.papa;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,12 +33,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
-import static com.bello.betaille.Consts.COLLECTION_NOMBRES;
-import static com.bello.betaille.Consts.COLLECTION_NOMBRES_PROPRIETAIRE;
-import static com.bello.betaille.Consts.COLLECTION_PROFIL_PROPRIETAIRE;
-import static com.bello.betaille.Consts.COLLECTION_PROPRIETAIRE;
-import static com.bello.betaille.Consts.PICK_IMAGE_REQUEST;
-import static com.bello.betaille.Model.FirebaseQueries.firebaseIncrement;
+import static com.bello.papa.Consts.COLLECTION_NOMBRES;
+import static com.bello.papa.Consts.COLLECTION_NOMBRES_PROPRIETAIRE;
+import static com.bello.papa.Consts.COLLECTION_PROFIL_PROPRIETAIRE;
+import static com.bello.papa.Consts.COLLECTION_PROPRIETAIRE;
+import static com.bello.papa.Consts.PICK_IMAGE_REQUEST;
+import static com.bello.papa.Model.FirebaseQueries.firebaseIncrement;
 
 public class AddPropActivity extends AppCompatActivity {
 
@@ -115,11 +115,12 @@ public class AddPropActivity extends AppCompatActivity {
                 .add(proprietaire).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
-                Intent intent = new Intent(AddPropActivity.this, ListPropActivity.class);
-                //intent.putExtra("id", documentReference.getId());
-                startActivity(intent);
+//                Intent intent = new Intent(AddPropActivity.this, ListPropActivity.class);
+//                //intent.putExtra("id", documentReference.getId());
+//                startActivity(intent);
                 Toast.makeText(AddPropActivity.this,"Proprietaire Added Successfully",Toast.LENGTH_SHORT).show();
                 firebaseIncrement(db.collection(COLLECTION_NOMBRES).document(COLLECTION_NOMBRES_PROPRIETAIRE), COLLECTION_NOMBRES_PROPRIETAIRE);
+                onBackPressed();
             }
         });
 

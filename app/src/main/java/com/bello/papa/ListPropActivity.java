@@ -1,4 +1,4 @@
-package com.bello.betaille;
+package com.bello.papa;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bello.betaille.Model.Prop;
-import com.bello.betaille.viewHolder.PropViewHolder;
+import com.bello.papa.Model.Prop;
+import com.bello.papa.viewHolder.PropViewHolder;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -21,7 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
 
-import static com.bello.betaille.Consts.COLLECTION_PROPRIETAIRE;
+import static com.bello.papa.Consts.COLLECTION_PROPRIETAIRE;
 
 public class ListPropActivity extends AppCompatActivity {
 
@@ -45,7 +45,7 @@ public class ListPropActivity extends AppCompatActivity {
         });
 
         final Query query = db.collection(COLLECTION_PROPRIETAIRE)
-                .orderBy("Nom", Query.Direction.ASCENDING);
+                .orderBy("Id", Query.Direction.ASCENDING);
         FirestoreRecyclerOptions<Prop> options = new FirestoreRecyclerOptions.Builder<Prop>()
                 .setQuery(query, Prop.class)
                 .build();
@@ -55,8 +55,8 @@ public class ListPropActivity extends AppCompatActivity {
 
                 propViewHolder.txtPropName.setText("Nom: " + prop.getNom());
                 propViewHolder.txtPropPname.setText("Prenom:" + prop.getPrenom());
-                propViewHolder.txtPropId.setText("Numero Identification: " + prop.getId());
-                propViewHolder.txtPropNmber.setText("Nombre des beoufs: " + Integer.toString(prop.getNombre()));
+                propViewHolder.txtPropId.setText("Nombre des beoufs: " + prop.getNombre());
+//                propViewHolder.txtPropNmber.setText("Nombre des beoufs: " + Integer.toString(prop.getNombre()));
                 propViewHolder.txtDepense.setText("Depense: " + Integer.toString(prop.getDepense()));
                 String profileProp = prop.getProfilePic();
                 //String image = "https://firebasestorage.googleapis.com/v0/b/faromesure.appspot.com/o/Clients_Profile_Picture%2Fabak_abd_567435643?alt=media&token=37c67046-7d39-4aac-bc7d-ed73b7e0199a";

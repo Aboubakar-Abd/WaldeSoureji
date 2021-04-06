@@ -73,11 +73,11 @@
                 android:textStyle="bold"
                 android:ems="10"
                 />
-            <TextView
-                android:id="@+id/nmbre_boeuf_holder"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textStyle="bold"/>
+<!--            <TextView-->
+<!--                android:id="@+id/nmbre_boeuf_holder"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:textStyle="bold"/>-->
 
             <TextView
                 android:id="@+id/depene_prop"

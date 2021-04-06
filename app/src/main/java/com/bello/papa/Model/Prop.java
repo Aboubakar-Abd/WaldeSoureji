@@ -1,4 +1,4 @@
-package com.bello.betaille.Model;
+package com.bello.papa.Model;
 
 public class Prop {
 
