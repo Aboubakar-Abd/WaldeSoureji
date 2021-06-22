@@ -1,8 +1,5 @@
 package com.bello.papa;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -17,19 +14,19 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bello.papa.Model.Boeufs;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
@@ -48,10 +45,10 @@ import static com.bello.papa.Consts.COLLECTION_BOEUF;
 import static com.bello.papa.Consts.COLLECTION_NOMBRES;
 import static com.bello.papa.Consts.COLLECTION_NOMBRES_BOEUFS;
 import static com.bello.papa.Consts.COLLECTION_PROFIL_BOEUFS;
-import static com.bello.papa.Consts.COLLECTION_PROPRIETAIRE;
 import static com.bello.papa.Consts.PICK_IMAGE_REQUEST;
 import static com.bello.papa.Consts.SEXE_FEMELE;
 import static com.bello.papa.Consts.SEXE_MALE;
+import static com.bello.papa.Model.FirebaseQueries.firebaseDecrement;
 import static com.bello.papa.Model.FirebaseQueries.firebaseIncrement;
 
 public class EditBoeufActivity extends AppCompatActivity {
@@ -61,6 +58,7 @@ public class EditBoeufActivity extends AppCompatActivity {
     Button saveBoeuf, profileChangeBtn;
     ListView listProp;
     String sexe = "";
+    String genre = "";
     public String BoeufId;
     DatePickerDialog picker;
 
@@ -82,7 +80,7 @@ public class EditBoeufActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         boeufRef = db.collection(COLLECTION_BOEUF).document(BoeufId);
-//        nbBoeufRef = db.collection(COLLECTION_NOMBRES).document(COLLECTION_NOMBRES_BOEUFS);
+        nbBoeufRef = db.collection(COLLECTION_NOMBRES).document(COLLECTION_NOMBRES_BOEUFS);
 
         storage = FirebaseStorage.getInstance();
         storageProfileRef = FirebaseStorage.getInstance().getReference().child(COLLECTION_BOEUF);
@@ -99,6 +97,8 @@ public class EditBoeufActivity extends AppCompatActivity {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 boeufs = documentSnapshot.toObject(Boeufs.class);
+                genre = boeufs.getSexe_Boeufs();
+//                Toast.makeText(EditBoeufActivity.this, genre, Toast.LENGTH_LONG).show();
                 intiInfo(boeufs);
             }
         });
@@ -173,6 +173,8 @@ public class EditBoeufActivity extends AppCompatActivity {
 
     private void UpdateBoeuf(String imageUrl){
 
+        firebaseDecrement(nbBoeufRef, genre);
+
         HashMap<String, Object> boeuf = new HashMap<>();
         boeuf.put("Designation", nomBoeuf.getText().toString());
         boeuf.put("Sexe_Boeufs", sexe);
@@ -187,6 +189,7 @@ public class EditBoeufActivity extends AppCompatActivity {
             public void onSuccess(Void aVoid) {
 //                Intent intent = new Intent(EditBoeufActivity.this, ListBoeufActivity.class);
 //                startActivity(intent);
+                firebaseIncrement(nbBoeufRef, sexe);
                 onBackPressed();
             }
         });

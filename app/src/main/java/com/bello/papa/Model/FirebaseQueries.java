@@ -11,7 +11,7 @@ public class FirebaseQueries {
 
     }
 
-    public static void firebaseDecrementt(DocumentReference documentReference,String s){
+    public static void firebaseDecrement(DocumentReference documentReference,String s){
 
         documentReference.update(s, FieldValue.increment(-1));
 
