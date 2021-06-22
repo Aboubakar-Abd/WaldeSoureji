@@ -1,17 +1,12 @@
 package com.bello.betaille;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -19,19 +14,16 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.Toast;
 
-import com.anstrontechnologies.corehelper.AnstronCoreHelper;
-import com.bello.betaille.Model.Boeufs;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
@@ -48,9 +40,7 @@ import java.util.UUID;
 import static com.bello.betaille.Consts.COLLECTION_BOEUF;
 import static com.bello.betaille.Consts.COLLECTION_NOMBRES;
 import static com.bello.betaille.Consts.COLLECTION_NOMBRES_BOEUFS;
-import static com.bello.betaille.Consts.COLLECTION_NOMBRES_PROPRIETAIRE;
 import static com.bello.betaille.Consts.COLLECTION_PROFIL_BOEUFS;
-import static com.bello.betaille.Consts.COLLECTION_PROFIL_PROPRIETAIRE;
 import static com.bello.betaille.Consts.COLLECTION_PROPRIETAIRE;
 import static com.bello.betaille.Consts.PICK_IMAGE_REQUEST;
 import static com.bello.betaille.Consts.SEXE_FEMELE;
